@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Markera aktiv navigationslänk
     setActiveNavLink();
     initThemeToggle();
+    initHamburgerMenu();
 
     const form = document.querySelector('.contact-form form');
 
@@ -11,10 +12,47 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+function initHamburgerMenu() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navLinksWrapper = document.getElementById('navLinksWrapper');
+
+    if (!hamburgerBtn || !navLinksWrapper) return;
+
+    // Toggle menu när hamburgerknappen klickas
+    hamburgerBtn.addEventListener('click', function() {
+        navLinksWrapper.classList.toggle('active');
+        const isActive = navLinksWrapper.classList.contains('active');
+        hamburgerBtn.setAttribute('aria-expanded', isActive);
+    });
+
+    // Stäng menyn när en länk klickas
+    navLinksWrapper.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+            navLinksWrapper.classList.remove('active');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Stäng menyn när man klickar utanför
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.navbar')) {
+            navLinksWrapper.classList.remove('active');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Stäng menyn när fönstret ändrar storlek till desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            navLinksWrapper.classList.remove('active');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
 function initThemeToggle() {
     const savedTheme = localStorage.getItem('portfolio-theme');
-    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    const initialTheme = savedTheme || (prefersLight ? 'light' : 'dark');
+    const initialTheme = savedTheme || 'dark';
 
     setTheme(initialTheme);
 
@@ -42,8 +80,8 @@ function setActiveNavLink() {
     // Hämta nuvarande sida
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-    // Få alla navigeringslänkar
-    const navLinks = document.querySelectorAll('nav a');
+    // Få alla navigeringslänkar 
+    const navLinks = document.querySelectorAll('.nav-links-wrapper a');
 
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
@@ -123,10 +161,19 @@ function isValidEmail(email) {
 
 function showError(fieldId, message) {
     const field = document.getElementById(fieldId);
-    const errorElement = document.createElement('div');
-    errorElement.className = 'error-message';
-    errorElement.textContent = message;
-    field.parentNode.insertBefore(errorElement, field.nextSibling);
+    const formGroup = field.closest('.form-group') || field.parentNode;
+    
+    // Kontrollera om det redan finns ett felmeddelande
+    const existingError = formGroup.querySelector('.error-message');
+    if (existingError) {
+        existingError.textContent = message;
+    } else {
+        const errorElement = document.createElement('div');
+        errorElement.className = 'error-message';
+        errorElement.textContent = message;
+        formGroup.appendChild(errorElement);
+    }
+    
     field.classList.add('input-error');
 }
 
