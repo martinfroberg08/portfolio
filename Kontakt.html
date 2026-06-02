@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Martin Fröberg portfolio med projekt, CV och kontaktinformation." />
     <link rel="stylesheet" href="style.css" />
     <title>Kontakt</title>
 </head>
@@ -35,25 +36,25 @@
 
         <section class="contact-form">
             <h2>Skicka ett meddelande</h2>
-            <form action="#" method="post">
+            <form action="#" method="post" novalidate>
                 <div class="form-group">
                     <label for="name">Namn</label>
-                    <input type="text" id="name" name="name" placeholder="Ditt namn" required />
+                    <input type="text" id="name" name="name" autocomplete="name" placeholder="Ditt namn" required />
                 </div>
 
                 <div class="form-group">
                     <label for="email">E-post</label>
-                    <input type="email" id="email" name="email" placeholder="din@email.se" required />
+                    <input type="email" id="email" name="email" autocomplete="email" placeholder="din@email.se" required />
                 </div>
 
                 <div class="form-group">
                     <label for="subject">Ämne</label>
-                    <input type="text" id="subject" name="subject" placeholder="Ämne" required />
+                    <input type="text" id="subject" name="subject" autocomplete="off" placeholder="Ämne" required />
                 </div>
 
                 <div class="form-group">
                     <label for="message">Meddelande</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Skriv ditt meddelande här" required></textarea>
+                    <textarea id="message" name="message" rows="5" autocomplete="off" placeholder="Skriv ditt meddelande här" required></textarea>
                 </div>
 
                 <button type="submit">Skicka</button>

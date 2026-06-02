@@ -161,6 +161,8 @@ function isValidEmail(email) {
 
 function showError(fieldId, message) {
     const field = document.getElementById(fieldId);
+    if (!field) return;
+
     const formGroup = field.closest('.form-group') || field.parentNode;
     
     // Kontrollera om det redan finns ett felmeddelande
@@ -170,6 +172,7 @@ function showError(fieldId, message) {
     } else {
         const errorElement = document.createElement('div');
         errorElement.className = 'error-message';
+        errorElement.setAttribute('role', 'alert');
         errorElement.textContent = message;
         formGroup.appendChild(errorElement);
     }
@@ -187,12 +190,25 @@ function clearErrors() {
     document.querySelectorAll('.input-error').forEach(element => {
         element.classList.remove('input-error');
     });
+
+    // Ta bort tidigare lyckomeddelanden
+    document.querySelectorAll('.success-message').forEach(element => {
+        element.remove();
+    });
 }
 
 function showSuccess() {
     const form = document.querySelector('.contact-form form');
+    if (!form) return;
+
+    const existingMessage = document.querySelector('.success-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+
     const successMessage = document.createElement('div');
     successMessage.className = 'success-message';
+    successMessage.setAttribute('role', 'status');
     successMessage.textContent = '✓ Tack för ditt meddelande! Vi kontaktar dig snart.';
 
     form.parentNode.insertBefore(successMessage, form);
