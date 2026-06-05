@@ -104,6 +104,7 @@ function validateForm(e) {
     const email = document.getElementById('email').value.trim();
     const subject = document.getElementById('subject').value.trim();
     const message = document.getElementById('message').value.trim();
+    const gdpr = document.getElementById('gdpr');
 
     // Rensa gamla felmeddelanden
     clearErrors();
@@ -143,6 +144,12 @@ function validateForm(e) {
         isValid = false;
     } else if (message.length < 10) {
         showError('message', 'Meddelandet måste innehålla minst 10 tecken');
+        isValid = false;
+    }
+
+    // Validera GDPR-godkännandet
+    if (!gdpr || !gdpr.checked) {
+        showError('gdpr', 'Du måste godkänna GDPR för att skicka formuläret');
         isValid = false;
     }
 
