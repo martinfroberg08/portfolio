@@ -1,41 +1,35 @@
 # Portfolio
 
-En personlig portfolio för Martin Fröberg, byggd med statisk HTML, CSS och JavaScript.
+Det här är en enkel personlig portfolio för Martin Fröberg. Sidan är byggd med statisk HTML, CSS och JavaScript och visar vem jag är, vad jag gjort och hur man kan kontakta mig.
 
-## Om projektet
+## Vad det är
 
-Detta projekt är en enkel hemsida som visar:
+Webbplatsen innehåller:
 
-- en startsida med presentation
+- en startsida
 - en sida om mig
 - en projektsida
 - en kontaktsida
 - ett CV med länk till PDF
 
-## Teknologier
+Allt är statiskt, vilket betyder att sidan inte behöver någon serverkod eller extra script för att fungera.
 
-- HTML
-- CSS
-- JavaScript
+## Så startar du sidan
 
-## Hur du öppnar sidan
+1. Öppna mappen för projektet i Visual Studio Code.
+2. Installera tillägget `Live Server` om det inte redan finns.
+3. Högerklicka på `index.html` och välj `Open with Live Server`.
+4. Webbläsaren öppnar sidan automatiskt.
 
-1. Klona repot eller öppna mappen i VS Code.
-2. Öppna `index.html` eller `hem.html` i en webbläsare.
+Det räcker alltså med VS Code och Live Server för att se projektet. Inget script behöver köras.
 
-Eftersom projektet är statiskt behöver du ingen installering eller server för att testa det lokalt.
-
-## Struktur
+## Projektfiler
 
 - `index.html` – startsida
-- `hem.html` – alternativ hem-/landningssida
-- `Ommig.html` – presentation om mig
+- `hem.html` – alternativ startsida
+- `Ommig.html` – om mig
 - `Projekt.html` – projektinformation
 - `Kontakt.html` – kontaktformulär
-- `Cv.html` – CV-sida med länk till PDF
+- `Cv.html` – CV-sida
 - `style.css` – styling
-- `index.js` – liten JavaScript-logik
-
-## Kontakt
-
-Om du vill komma i kontakt med mig kan du använda sidan `Kontakt.html` eller besöka mitt GitHub-konto.
+- `index.js` – enkel JavaScript-logik

@@ -400,33 +400,34 @@ button:hover {
 
 @media (max-width: 860px) {
     .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
+        grid-template-columns: 1fr minmax(110px, 140px);
+        text-align: left;
+        align-items: center;
     }
 
     .hero-copy,
-    .hero-image {
+    .about-card {
         max-width: 100%;
-        margin: 0 auto;
+        margin: 0;
     }
 
     .hero-copy p {
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .about-card {
         width: 100%;
-        margin: 0 auto;
+        margin: 0;
     }
 
     .hero-image {
-        max-width: 100%;
-        justify-self: center;
+        max-width: 140px;
+        justify-self: end;
     }
 
     .hero-image figure {
-        min-height: 220px;
+        min-height: 180px;
     }
 
     .hero-copy,
